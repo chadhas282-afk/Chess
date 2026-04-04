@@ -18,3 +18,7 @@ interface Piece {
   type: PieceType;
   color: Color;
 }
+
+const ChessGame: React.FC = () => {
+    
+}
