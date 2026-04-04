@@ -20,5 +20,5 @@ interface Piece {
 }
 
 const ChessGame: React.FC = () => {
-    
+    const [board, setBoard] = useState<(Piece | null)[][]>(initializeBoard());
 }
