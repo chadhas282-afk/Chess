@@ -13,3 +13,8 @@ interface Move {
 
 type PieceType = 'pawn' | 'rook' | 'knight' | 'bishop' | 'queen' | 'king';
 type Color = 'white' | 'black';
+
+interface Piece {
+  type: PieceType;
+  color: Color;
+}
