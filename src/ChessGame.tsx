@@ -24,4 +24,5 @@ const ChessGame: React.FC = () => {
     const [selectedSquare, setSelectedSquare] = useState<Position | null>(null);
     const [validMoves, setValidMoves] = useState<Position[]>([]);
     const [isWhiteTurn, setIsWhiteTurn] = useState(true);
+    const [gameStatus, setGameStatus] = useState<string>('White to move');
 }
