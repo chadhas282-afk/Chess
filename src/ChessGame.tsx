@@ -6,3 +6,7 @@ interface Position {
   col: number;
 }
 
+interface Move {
+  from: Position;
+  to: Position;
+}
