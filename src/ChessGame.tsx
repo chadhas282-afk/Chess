@@ -10,3 +10,6 @@ interface Move {
   from: Position;
   to: Position;
 }
+
+type PieceType = 'pawn' | 'rook' | 'knight' | 'bishop' | 'queen' | 'king';
+type Color = 'white' | 'black';
