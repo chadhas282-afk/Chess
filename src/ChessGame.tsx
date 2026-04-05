@@ -38,9 +38,11 @@ const ChessGame: React.FC = () => {
       newBoard[7][i] = { type, color: 'white' };
     });
     return newBoard;
-  }}
+  }
 
   function getRawMoves(pos: Position, currentBoard: (Piece | null)[][]): Position[] {
     const piece = currentBoard[pos.row][pos.col];
      if (!piece) return [];
+     const moves: Position[] = [];
   }
+}
