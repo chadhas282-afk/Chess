@@ -54,6 +54,6 @@ const ChessGame: React.FC = () => {
       }
     };
      const addSlidingMoves = (dirs: number[][]) => {
-      
+
      }
   }
