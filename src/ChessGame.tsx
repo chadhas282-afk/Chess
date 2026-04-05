@@ -33,5 +33,8 @@ const ChessGame: React.FC = () => {
           newBoard[6][i] = { type: 'pawn', color: 'white' };
         }
         const layout: PieceType[] = ['rook', 'knight', 'bishop', 'queen', 'king', 'bishop', 'knight', 'rook'];
+        layout.forEach((type, i) => {
+          
+        }
     }
 }
