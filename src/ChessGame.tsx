@@ -40,14 +40,20 @@ const ChessGame: React.FC = () => {
     return newBoard;
   }
 
+  // --- CORE LOGIC: RAW MOVEMENT ---
   function getRawMoves(pos: Position, currentBoard: (Piece | null)[][]): Position[] {
     const piece = currentBoard[pos.row][pos.col];
-     if (!piece) return [];
-     const moves: Position[] = [];
-      const addMoveIfValid = (r: number, c: number) => {
-        if (r >= 0 && r < 8 && c >= 0 && c < 8) {
-          
+    if (!piece) return [];
+    const moves: Position[] = [];
+
+    const addMoveIfValid = (r: number, c: number) => {
+      if (r >= 0 && r < 8 && c >= 0 && c < 8) {
+        if (!currentBoard[r][c] || currentBoard[r][c]?.color !== piece.color) {
+          moves.push({ row: r, col: c });
         }
       }
+    };
+     const addSlidingMoves = (dirs: number[][]) => {
+      
+     }
   }
-}
