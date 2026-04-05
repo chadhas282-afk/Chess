@@ -20,22 +20,22 @@ interface Piece {
 }
 
 const ChessGame: React.FC = () => {
-    const [board, setBoard] = useState<(Piece | null)[][]>(initializeBoard());
-    const [selectedSquare, setSelectedSquare] = useState<Position | null>(null);
-    const [validMoves, setValidMoves] = useState<Position[]>([]);
-    const [isWhiteTurn, setIsWhiteTurn] = useState(true);
-    const [gameStatus, setGameStatus] = useState<string>('White to move');
+  const [board, setBoard] = useState<(Piece | null)[][]>(initializeBoard());
+  const [selectedSquare, setSelectedSquare] = useState<Position | null>(null);
+  const [validMoves, setValidMoves] = useState<Position[]>([]);
+  const [isWhiteTurn, setIsWhiteTurn] = useState(true);
+  const [gameStatus, setGameStatus] = useState<string>('White to move');
 
-    function initializeBoard(): (Piece | null)[][] {
-        const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
-        for (let i = 0; i < 8; i++) {
-          newBoard[1][i] = { type: 'pawn', color: 'black' };
-          newBoard[6][i] = { type: 'pawn', color: 'white' };
-        }
-        const layout: PieceType[] = ['rook', 'knight', 'bishop', 'queen', 'king', 'bishop', 'knight', 'rook'];
-        layout.forEach((type, i) => {
-           newBoard[0][i] = { type, color: 'black' };
-           newBoard[7][i] = { type, color: 'white' };
-        }
+  function initializeBoard(): (Piece | null)[][] {
+    const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
+    for (let i = 0; i < 8; i++) {
+      newBoard[1][i] = { type: 'pawn', color: 'black' };
+      newBoard[6][i] = { type: 'pawn', color: 'white' };
     }
-}
+    const layout: PieceType[] = ['rook', 'knight', 'bishop', 'queen', 'king', 'bishop', 'knight', 'rook'];
+    layout.forEach((type, i) => {
+      newBoard[0][i] = { type, color: 'black' };
+      newBoard[7][i] = { type, color: 'white' };
+    });
+    return newBoard;
+  }
