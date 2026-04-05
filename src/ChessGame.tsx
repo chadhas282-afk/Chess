@@ -28,6 +28,8 @@ const ChessGame: React.FC = () => {
 
     function initializeBoard(): (Piece | null)[][] {
         const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
-        
+        for (let i = 0; i < 8; i++) {
+          
+        }
     }
 }
