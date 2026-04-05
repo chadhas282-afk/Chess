@@ -44,5 +44,8 @@ const ChessGame: React.FC = () => {
     const piece = currentBoard[pos.row][pos.col];
      if (!piece) return [];
      const moves: Position[] = [];
+      const addMoveIfValid = (r: number, c: number) => {
+        
+      }
   }
 }
