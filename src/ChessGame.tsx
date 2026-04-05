@@ -30,7 +30,7 @@ const ChessGame: React.FC = () => {
         const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
         for (let i = 0; i < 8; i++) {
           newBoard[1][i] = { type: 'pawn', color: 'black' };
-          
+          newBoard[6][i] = { type: 'pawn', color: 'white' };
         }
     }
 }
