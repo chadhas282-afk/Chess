@@ -42,5 +42,5 @@ const ChessGame: React.FC = () => {
 
   function getRawMoves(pos: Position, currentBoard: (Piece | null)[][]): Position[] {
     const piece = currentBoard[pos.row][pos.col];
-    
+     if (!piece) return [];
   }
