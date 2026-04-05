@@ -27,6 +27,7 @@ const ChessGame: React.FC = () => {
     const [gameStatus, setGameStatus] = useState<string>('White to move');
 
     function initializeBoard(): (Piece | null)[][] {
+        const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
         
     }
 }
