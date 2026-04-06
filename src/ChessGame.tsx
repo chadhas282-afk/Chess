@@ -58,6 +58,7 @@ const ChessGame: React.FC = () => {
            for (let i = 1; i < 8; i++) {
             if (nr < 0 || nr >= 8 || nc < 0 || nc >= 8) break;
             const target = currentBoard[nr][nc];
+            if (!target) { moves.push({ row: nr, col: nc }); }
            }
      }
   }
