@@ -56,7 +56,7 @@ const ChessGame: React.FC = () => {
      const addSlidingMoves = (dirs: number[][]) => {
          for (const [dr, dc] of dirs) {
            for (let i = 1; i < 8; i++) {
-            const nr = pos.row + dr * i, nc = pos.col + dc * i;
+            if (nr < 0 || nr >= 8 || nc < 0 || nc >= 8) break;
            }
      }
   }
