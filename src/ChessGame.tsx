@@ -67,3 +67,8 @@ const ChessGame: React.FC = () => {
         }
       }
     };
+    switch (piece.type) {
+      
+    }
+  }
+}  
