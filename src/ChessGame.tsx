@@ -69,6 +69,7 @@ const ChessGame: React.FC = () => {
     };
     switch (piece.type) {
        case 'pawn':
+        const dir = piece.color === 'white' ? -1 : 1;
         
     }
   }
