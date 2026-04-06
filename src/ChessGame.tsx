@@ -70,7 +70,9 @@ const ChessGame: React.FC = () => {
     switch (piece.type) {
        case 'pawn':
         const dir = piece.color === 'white' ? -1 : 1;
-        
+        if (pos.row + dir >= 0 && pos.row + dir < 8 && !currentBoard[pos.row + dir][pos.col]) {
+          
+        }
     }
   }
 }  
