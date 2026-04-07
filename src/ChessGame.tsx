@@ -92,5 +92,9 @@ const ChessGame: React.FC = () => {
             if (dr !== 0 || dc !== 0) addMoveIfValid(pos.row + dr, pos.col + dc);
         break;
         }
+        return moves;
+    }
+    function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
+      
     }
   }
