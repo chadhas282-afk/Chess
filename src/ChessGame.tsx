@@ -95,6 +95,6 @@ const ChessGame: React.FC = () => {
         return moves;
     }
     function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
-      
+       for (let r = 0; r < 8; r++)
     }
   }
