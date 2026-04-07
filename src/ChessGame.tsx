@@ -83,6 +83,7 @@ const ChessGame: React.FC = () => {
         });
         break;
         case 'rook': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0]]); break;
+        case 'bishop': addSlidingMoves([[1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
         }
     }
   }
