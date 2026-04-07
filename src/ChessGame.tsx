@@ -78,7 +78,10 @@ const ChessGame: React.FC = () => {
         }
         [-1, 1].forEach(dc => {
           const nr = pos.row + dir, nc = pos.col + dc;
+           if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8 && currentBoard[nr][nc]?.color && currentBoard[nr][nc]?.color !== piece.color)
+            moves.push({ row: nr, col: nc });
+        });
+        break;
         }
     }
   }
-}  
