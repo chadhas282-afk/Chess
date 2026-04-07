@@ -99,5 +99,6 @@ const ChessGame: React.FC = () => {
          for (let c = 0; c < 8; c++)
         if (currentBoard[r][c]?.type === 'king' && currentBoard[r][c]?.color === color)
           return { row: r, col: c };
+        return { row: -1, col: -1 };
     }
   }
