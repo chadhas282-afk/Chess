@@ -77,7 +77,7 @@ const ChessGame: React.FC = () => {
             moves.push({ row: pos.row + 2 * dir, col: pos.col });
         }
         [-1, 1].forEach(dc => {
-          
+          const nr = pos.row + dir, nc = pos.col + dc;
         }
     }
   }
