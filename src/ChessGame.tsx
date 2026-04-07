@@ -72,6 +72,8 @@ const ChessGame: React.FC = () => {
         const dir = piece.color === 'white' ? -1 : 1;
         if (pos.row + dir >= 0 && pos.row + dir < 8 && !currentBoard[pos.row + dir][pos.col]) {
            moves.push({ row: pos.row + dir, col: pos.col });
+          const startRow = piece.color === 'white' ? 6 : 1;
+          
         }
     }
   }
