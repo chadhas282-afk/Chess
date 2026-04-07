@@ -82,6 +82,7 @@ const ChessGame: React.FC = () => {
             moves.push({ row: nr, col: nc });
         });
         break;
+        case 'rook': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0]]); break;
         }
     }
   }
