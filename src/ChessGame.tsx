@@ -97,5 +97,7 @@ const ChessGame: React.FC = () => {
     function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
        for (let r = 0; r < 8; r++)
          for (let c = 0; c < 8; c++)
+        if (currentBoard[r][c]?.type === 'king' && currentBoard[r][c]?.color === color)
+          return { row: r, col: c };
     }
   }
