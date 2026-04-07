@@ -75,7 +75,9 @@ const ChessGame: React.FC = () => {
           const startRow = piece.color === 'white' ? 6 : 1;
            if (pos.row === startRow && !currentBoard[pos.row + 2 * dir][pos.col])
             moves.push({ row: pos.row + 2 * dir, col: pos.col });
-        
+        }
+        [-1, 1].forEach(dc => {
+          
         }
     }
   }
