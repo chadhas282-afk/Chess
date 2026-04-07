@@ -101,4 +101,7 @@ const ChessGame: React.FC = () => {
           return { row: r, col: c };
         return { row: -1, col: -1 };
     }
+    function isCheck(color: Color, currentBoard: (Piece | null)[][]): boolean {
+      
+    }
   }
