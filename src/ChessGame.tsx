@@ -86,6 +86,11 @@ const ChessGame: React.FC = () => {
         case 'bishop': addSlidingMoves([[1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
          case 'queen': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
           case 'knight': [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]].forEach(([dr, dc]) => addMoveIfValid(pos.row + dr, pos.col + dc)); break;
+          case 'king':
+        for (let dr = -1; dr <= 1; dr++)
+          for (let dc = -1; dc <= 1; dc++)
+            if (dr !== 0 || dc !== 0) addMoveIfValid(pos.row + dr, pos.col + dc);
+        break;
         }
     }
   }
