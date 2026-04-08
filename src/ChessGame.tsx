@@ -120,3 +120,4 @@ const ChessGame: React.FC = () => {
     return false;
   }
 function getLegalMoves(pos: Position): Position[] {
+  const piece = board[pos.row][pos.col];
