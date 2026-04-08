@@ -108,5 +108,9 @@ const ChessGame: React.FC = () => {
         for (let c = 0; c < 8; c++) {
           if (currentBoard[r][c]?.color === opponentColor) {
             const moves = getRawMoves({ row: r, col: c }, currentBoard);
+            if (moves.some(m => m.row === kingPos.row && m.col === kingPos.col)) return true;
+        }
+      }
+    }
     }
   }
