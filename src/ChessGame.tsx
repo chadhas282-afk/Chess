@@ -53,7 +53,8 @@ const ChessGame: React.FC = () => {
         }
       }
     };
-      const addSlidingMoves = (dirs: number[][]) => {
+
+    const addSlidingMoves = (dirs: number[][]) => {
       for (const [dr, dc] of dirs) {
         for (let i = 1; i < 8; i++) {
           const nr = pos.row + dr * i, nc = pos.col + dc * i;
@@ -67,50 +68,54 @@ const ChessGame: React.FC = () => {
         }
       }
     };
+
     switch (piece.type) {
-       case 'pawn':
+      case 'pawn':
         const dir = piece.color === 'white' ? -1 : 1;
         if (pos.row + dir >= 0 && pos.row + dir < 8 && !currentBoard[pos.row + dir][pos.col]) {
-           moves.push({ row: pos.row + dir, col: pos.col });
+          moves.push({ row: pos.row + dir, col: pos.col });
           const startRow = piece.color === 'white' ? 6 : 1;
-           if (pos.row === startRow && !currentBoard[pos.row + 2 * dir][pos.col])
+          if (pos.row === startRow && !currentBoard[pos.row + 2 * dir][pos.col])
             moves.push({ row: pos.row + 2 * dir, col: pos.col });
         }
         [-1, 1].forEach(dc => {
           const nr = pos.row + dir, nc = pos.col + dc;
-           if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8 && currentBoard[nr][nc]?.color && currentBoard[nr][nc]?.color !== piece.color)
+          if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8 && currentBoard[nr][nc]?.color && currentBoard[nr][nc]?.color !== piece.color)
             moves.push({ row: nr, col: nc });
         });
         break;
-        case 'rook': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0]]); break;
-        case 'bishop': addSlidingMoves([[1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
-         case 'queen': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
-          case 'knight': [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]].forEach(([dr, dc]) => addMoveIfValid(pos.row + dr, pos.col + dc)); break;
-          case 'king':
+      case 'rook': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0]]); break;
+      case 'bishop': addSlidingMoves([[1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
+      case 'queen': addSlidingMoves([[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]); break;
+      case 'knight': [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]].forEach(([dr, dc]) => addMoveIfValid(pos.row + dr, pos.col + dc)); break;
+      case 'king':
         for (let dr = -1; dr <= 1; dr++)
           for (let dc = -1; dc <= 1; dc++)
             if (dr !== 0 || dc !== 0) addMoveIfValid(pos.row + dr, pos.col + dc);
         break;
-        }
-        return moves;
     }
-    function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
-       for (let r = 0; r < 8; r++)
-         for (let c = 0; c < 8; c++)
+    return moves;
+  }
+
+  // --- CHECK & CHECKMATE LOGIC ---
+  function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
+    for (let r = 0; r < 8; r++)
+      for (let c = 0; c < 8; c++)
         if (currentBoard[r][c]?.type === 'king' && currentBoard[r][c]?.color === color)
           return { row: r, col: c };
-        return { row: -1, col: -1 };
-    }
-    function isCheck(color: Color, currentBoard: (Piece | null)[][]): boolean {
-      const kingPos = findKing(color, currentBoard);
-      const opponentColor = color === 'white' ? 'black' : 'white';
-       for (let r = 0; r < 8; r++) {
-        for (let c = 0; c < 8; c++) {
-          if (currentBoard[r][c]?.color === opponentColor) {
-            const moves = getRawMoves({ row: r, col: c }, currentBoard);
-            if (moves.some(m => m.row === kingPos.row && m.col === kingPos.col)) return true;
+    return { row: -1, col: -1 };
+  }
+
+  function isCheck(color: Color, currentBoard: (Piece | null)[][]): boolean {
+    const kingPos = findKing(color, currentBoard);
+    const opponentColor = color === 'white' ? 'black' : 'white';
+    for (let r = 0; r < 8; r++) {
+      for (let c = 0; c < 8; c++) {
+        if (currentBoard[r][c]?.color === opponentColor) {
+          const moves = getRawMoves({ row: r, col: c }, currentBoard);
+          if (moves.some(m => m.row === kingPos.row && m.col === kingPos.col)) return true;
         }
       }
     }
-    }
+    return false;
   }
