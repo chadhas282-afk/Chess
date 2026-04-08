@@ -105,5 +105,6 @@ const ChessGame: React.FC = () => {
       const kingPos = findKing(color, currentBoard);
       const opponentColor = color === 'white' ? 'black' : 'white';
        for (let r = 0; r < 8; r++) {
+        for (let c = 0; c < 8; c++) {
     }
   }
