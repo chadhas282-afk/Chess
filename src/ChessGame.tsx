@@ -125,6 +125,6 @@ function getLegalMoves(pos: Position): Position[] {
    const rawMoves = getRawMoves(pos, board);
 
    return rawMoves.filter(move => {
-    
+     const tempBoard = board.map(row => [...row]);
    });
 }
