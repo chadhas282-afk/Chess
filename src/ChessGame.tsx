@@ -123,3 +123,8 @@ function getLegalMoves(pos: Position): Position[] {
   const piece = board[pos.row][pos.col];
    if (!piece) return [];
    const rawMoves = getRawMoves(pos, board);
+
+   return rawMoves.filter(move => {
+    
+   });
+}
