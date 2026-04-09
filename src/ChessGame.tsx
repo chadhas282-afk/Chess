@@ -151,4 +151,4 @@ useEffect(() => {
   }, [isWhiteTurn, board]);
 
 function handleSquareClick(row: number, col: number) {
-  
+   if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
