@@ -132,4 +132,5 @@ function getLegalMoves(pos: Position): Position[] {
 
 useEffect(() => {
    const turnColor = isWhiteTurn ? 'white' : 'black';
+   const inCheck = isCheck(turnColor, board);
 }
