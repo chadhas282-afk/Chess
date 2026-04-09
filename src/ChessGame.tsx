@@ -149,3 +149,6 @@ useEffect(() => {
       setGameStatus(`${isWhiteTurn ? "White's" : "Black's"} Turn ${inCheck ? "(CHECK)" : ""}`);
     }
   }, [isWhiteTurn, board]);
+
+function handleSquareClick(row: number, col: number) {
+  
