@@ -117,38 +117,40 @@ const ChessGame: React.FC = () => {
     }
     return false;
   }
-function getLegalMoves(pos: Position): Position[] {
-  const piece = board[pos.row][pos.col];
-   if (!piece) return [];
-   const rawMoves = getRawMoves(pos, board);
 
-   return rawMoves.filter(move => {
-     const tempBoard = board.map(row => [...row]);
-     tempBoard[move.row][move.col] = piece;
-     tempBoard[pos.row][pos.col] = null;
-     return !isCheck(piece.color, tempBoard);
-   });
-}
+  function getLegalMoves(pos: Position): Position[] {
+    const piece = board[pos.row][pos.col];
+    if (!piece) return [];
+    const rawMoves = getRawMoves(pos, board);
 
-useEffect(() => {
-   const turnColor = isWhiteTurn ? 'white' : 'black';
-   const inCheck = isCheck(turnColor, board);
+    return rawMoves.filter(move => {
+      const tempBoard = board.map(row => [...row]);
+      tempBoard[move.row][move.col] = piece;
+      tempBoard[pos.row][pos.col] = null;
+      return !isCheck(piece.color, tempBoard);
+    });
+  }
 
-   let hasMoves = false;
-   for (let r = 0; r < 8; r++) {
-    for (let c = 0; c < 8; c++) {
-      if (board[r][c]?.color === turnColor && getLegalMoves({ row: r, col: c }).length > 0) {
-        hasMoves = true; break;
+  useEffect(() => {
+    const turnColor = isWhiteTurn ? 'white' : 'black';
+    const inCheck = isCheck(turnColor, board);
+
+    let hasMoves = false;
+    for (let r = 0; r < 8; r++) {
+      for (let c = 0; c < 8; c++) {
+        if (board[r][c]?.color === turnColor && getLegalMoves({ row: r, col: c }).length > 0) {
+          hasMoves = true; break;
         }
       }
       if (hasMoves) break;
     }
- if (!hasMoves) {
-   setGameStatus(inCheck ? `CHECKMATE! ${isWhiteTurn ? 'Black' : 'White'} Wins!` : "STALEMATE!");
-   } else {
+
+    if (!hasMoves) {
+      setGameStatus(inCheck ? `CHECKMATE! ${isWhiteTurn ? 'Black' : 'White'} Wins!` : "STALEMATE!");
+    } else {
       setGameStatus(`${isWhiteTurn ? "White's" : "Black's"} Turn ${inCheck ? "(CHECK)" : ""}`);
     }
   }, [isWhiteTurn, board]);
 
-function handleSquareClick(row: number, col: number) {
-   if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
+  function handleSquareClick(row: number, col: number) {
+    if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
