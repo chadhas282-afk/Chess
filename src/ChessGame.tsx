@@ -143,3 +143,4 @@ useEffect(() => {
       }
       if (hasMoves) break;
     }
+ if (!hasMoves) {
