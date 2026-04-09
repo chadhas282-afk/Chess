@@ -145,3 +145,7 @@ useEffect(() => {
     }
  if (!hasMoves) {
    setGameStatus(inCheck ? `CHECKMATE! ${isWhiteTurn ? 'Black' : 'White'} Wins!` : "STALEMATE!");
+   } else {
+      setGameStatus(`${isWhiteTurn ? "White's" : "Black's"} Turn ${inCheck ? "(CHECK)" : ""}`);
+    }
+  }, [isWhiteTurn, board]);
