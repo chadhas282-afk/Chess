@@ -128,5 +128,6 @@ function getLegalMoves(pos: Position): Position[] {
      const tempBoard = board.map(row => [...row]);
      tempBoard[move.row][move.col] = piece;
      tempBoard[pos.row][pos.col] = null;
+     return !isCheck(piece.color, tempBoard);
    });
 }
