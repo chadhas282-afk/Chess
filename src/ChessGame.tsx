@@ -144,3 +144,4 @@ useEffect(() => {
       if (hasMoves) break;
     }
  if (!hasMoves) {
+   setGameStatus(inCheck ? `CHECKMATE! ${isWhiteTurn ? 'Black' : 'White'} Wins!` : "STALEMATE!");
