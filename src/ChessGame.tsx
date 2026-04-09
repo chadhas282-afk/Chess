@@ -40,7 +40,6 @@ const ChessGame: React.FC = () => {
     return newBoard;
   }
 
-  // --- CORE LOGIC: RAW MOVEMENT ---
   function getRawMoves(pos: Position, currentBoard: (Piece | null)[][]): Position[] {
     const piece = currentBoard[pos.row][pos.col];
     if (!piece) return [];
@@ -97,7 +96,6 @@ const ChessGame: React.FC = () => {
     return moves;
   }
 
-  // --- CHECK & CHECKMATE LOGIC ---
   function findKing(color: Color, currentBoard: (Piece | null)[][]): Position {
     for (let r = 0; r < 8; r++)
       for (let c = 0; c < 8; c++)
@@ -133,5 +131,5 @@ function getLegalMoves(pos: Position): Position[] {
 }
 
 useEffect(() => {
-  
+   const turnColor = isWhiteTurn ? 'white' : 'black';
 }
