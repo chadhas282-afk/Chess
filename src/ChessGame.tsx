@@ -131,3 +131,7 @@ function getLegalMoves(pos: Position): Position[] {
      return !isCheck(piece.color, tempBoard);
    });
 }
+
+useEffect(() => {
+  
+}
