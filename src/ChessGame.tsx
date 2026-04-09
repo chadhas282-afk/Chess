@@ -137,4 +137,9 @@ useEffect(() => {
    let hasMoves = false;
    for (let r = 0; r < 8; r++) {
     for (let c = 0; c < 8; c++) {
-}
+      if (board[r][c]?.color === turnColor && getLegalMoves({ row: r, col: c }).length > 0) {
+        hasMoves = true; break;
+        }
+      }
+      if (hasMoves) break;
+    }
