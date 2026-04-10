@@ -156,3 +156,4 @@ const ChessGame: React.FC = () => {
     if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
 
     if (selectedSquare && validMoves.some(m => m.row === row && m.col === col)) {
+      const newBoard = board.map(r => [...r]);
