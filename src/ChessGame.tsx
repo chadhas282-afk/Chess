@@ -157,3 +157,4 @@ const ChessGame: React.FC = () => {
 
     if (selectedSquare && validMoves.some(m => m.row === row && m.col === col)) {
       const newBoard = board.map(r => [...r]);
+      newBoard[row][col] = board[selectedSquare.row][selectedSquare.col];
