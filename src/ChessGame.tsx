@@ -175,3 +175,7 @@ const ChessGame: React.FC = () => {
         setValidMoves([]);
       }
     }
+
+    const getPieceSymbol = (piece: Piece | null) => {
+      if {!piece} return '';
+      const symbols: Record<PieceType, string> = {
