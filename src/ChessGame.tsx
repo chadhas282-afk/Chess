@@ -167,3 +167,6 @@ const ChessGame: React.FC = () => {
     }
 
      const piece = board[row][col];
+      if {piece && piece.color === (isWhiteTurn ? 'white' : 'black')) {
+
+      
