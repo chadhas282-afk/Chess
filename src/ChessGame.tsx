@@ -163,3 +163,5 @@ const ChessGame: React.FC = () => {
       setSelectedSquare(null);
       setValidMoves([]);
       setIsWhiteTurn(!isWhiteTurn);
+       return;
+    }
