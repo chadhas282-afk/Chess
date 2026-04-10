@@ -159,3 +159,4 @@ const ChessGame: React.FC = () => {
       const newBoard = board.map(r => [...r]);
       newBoard[row][col] = board[selectedSquare.row][selectedSquare.col];
       newBoard[selectedSquare.row][selectedSquare.col] = null;
+      setBoard(newBoard);
