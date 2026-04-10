@@ -154,3 +154,5 @@ const ChessGame: React.FC = () => {
 
   function handleSquareClick(row: number, col: number) {
     if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
+
+    if (selectedSquare && validMoves.some(m => m.row === row && m.col === col)) {
