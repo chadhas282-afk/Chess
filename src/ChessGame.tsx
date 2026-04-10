@@ -162,3 +162,4 @@ const ChessGame: React.FC = () => {
       setBoard(newBoard);
       setSelectedSquare(null);
       setValidMoves([]);
+      setIsWhiteTurn(!isWhiteTurn);
