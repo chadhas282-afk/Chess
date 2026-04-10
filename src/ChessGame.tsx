@@ -170,3 +170,8 @@ const ChessGame: React.FC = () => {
       if {piece && piece.color === (isWhiteTurn ? 'white' : 'black')) {
         setSelectedSquare({ row, col });
       setValidMoves(getLegalMoves({ row, col }));
+      }else{
+        setSelectedSquare(null);
+        setValidMoves([]);
+      }
+    }
