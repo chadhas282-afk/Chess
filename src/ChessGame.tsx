@@ -165,3 +165,5 @@ const ChessGame: React.FC = () => {
       setIsWhiteTurn(!isWhiteTurn);
        return;
     }
+
+     const piece = board[row][col];
