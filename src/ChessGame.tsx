@@ -161,3 +161,4 @@ const ChessGame: React.FC = () => {
       newBoard[selectedSquare.row][selectedSquare.col] = null;
       setBoard(newBoard);
       setSelectedSquare(null);
+      setValidMoves([]);
