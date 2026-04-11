@@ -202,5 +202,6 @@ const ChessGame: React.FC = () => {
               className={`square ${(rIdx + cIdx) % 2 === 0 ? 'light' : 'dark'} ${isSelected ? 'selected' : ''} ${isValid ? 'valid' : ''}`}
               onClick={() => handleSquareClick(rIdx, cIdx)}
             >
+               <span className="piece">{getPieceSymbol(piece)}</span>
        </div>
     </div>
