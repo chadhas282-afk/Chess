@@ -180,3 +180,4 @@ const ChessGame: React.FC = () => {
       if {!piece} return '';
       const symbols: Record<PieceType, string> = {
         pawn: piece.color === 'white' ? '♙' : '♟',
+        rook: piece.color === 'white' ? '♖' : '♜',
