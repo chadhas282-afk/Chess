@@ -196,5 +196,6 @@ const ChessGame: React.FC = () => {
          {board.map((row, rIdx) => row.map((piece, cIdx) => {
           const isSelected = selectedSquare?.row === rIdx && selectedSquare?.col === cIdx;
             const isValid = validMoves.some(m => m.row === rIdx && m.col === cIdx);
+            return (
        </div>
     </div>
