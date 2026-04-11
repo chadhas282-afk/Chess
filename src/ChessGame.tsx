@@ -192,4 +192,7 @@ const ChessGame: React.FC = () => {
   return (
     <div className="chess-game">
        <h2>{gameStatus}</h2>
+       <div className="chess-board">
+        
+       </div>
     </div>
