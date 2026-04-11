@@ -182,3 +182,4 @@ const ChessGame: React.FC = () => {
         pawn: piece.color === 'white' ? '♙' : '♟',
         rook: piece.color === 'white' ? '♖' : '♜',
         knight: piece.color === 'white' ? '♘' : '♞',
+        bishop: piece.color === 'white' ? '♗' : '♝',
