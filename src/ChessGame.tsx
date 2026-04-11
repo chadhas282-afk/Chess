@@ -197,5 +197,10 @@ const ChessGame: React.FC = () => {
           const isSelected = selectedSquare?.row === rIdx && selectedSquare?.col === cIdx;
             const isValid = validMoves.some(m => m.row === rIdx && m.col === cIdx);
             return (
+               <div
+              key={`${rIdx}-${cIdx}`}
+              className={`square ${(rIdx + cIdx) % 2 === 0 ? 'light' : 'dark'} ${isSelected ? 'selected' : ''} ${isValid ? 'valid' : ''}`}
+              onClick={() => handleSquareClick(rIdx, cIdx)}
+            >
        </div>
     </div>
