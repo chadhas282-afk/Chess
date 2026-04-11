@@ -184,3 +184,7 @@ const ChessGame: React.FC = () => {
         knight: piece.color === 'white' ? '♘' : '♞',
         bishop: piece.color === 'white' ? '♗' : '♝',
         queen: piece.color === 'white' ? '♕' : '♛',
+        king: piece.color === 'white' ? '♔' : '♚',
+    };
+    return symbols[piece.type];
+  };
