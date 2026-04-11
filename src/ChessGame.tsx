@@ -193,6 +193,6 @@ const ChessGame: React.FC = () => {
     <div className="chess-game">
        <h2>{gameStatus}</h2>
        <div className="chess-board">
-        
+         {board.map((row, rIdx) => row.map((piece, cIdx) => {
        </div>
     </div>
