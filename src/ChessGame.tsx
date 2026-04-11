@@ -163,33 +163,33 @@ const ChessGame: React.FC = () => {
       setSelectedSquare(null);
       setValidMoves([]);
       setIsWhiteTurn(!isWhiteTurn);
-       return;
+      return;
     }
 
-     const piece = board[row][col];
-      if {piece && piece.color === (isWhiteTurn ? 'white' : 'black')) {
-        setSelectedSquare({ row, col });
+    const piece = board[row][col];
+    if (piece && piece.color === (isWhiteTurn ? 'white' : 'black')) {
+      setSelectedSquare({ row, col });
       setValidMoves(getLegalMoves({ row, col }));
-      }else{
-        setSelectedSquare(null);
-        setValidMoves([]);
-      }
+    } else {
+      setSelectedSquare(null);
+      setValidMoves([]);
     }
+  }
 
-    const getPieceSymbol = (piece: Piece | null) => {
-      if {!piece} return '';
-      const symbols: Record<PieceType, string> = {
-        pawn: piece.color === 'white' ? '♙' : '♟',
-        rook: piece.color === 'white' ? '♖' : '♜',
-        knight: piece.color === 'white' ? '♘' : '♞',
-        bishop: piece.color === 'white' ? '♗' : '♝',
-        queen: piece.color === 'white' ? '♕' : '♛',
-        king: piece.color === 'white' ? '♔' : '♚',
+  const getPieceSymbol = (piece: Piece | null) => {
+    if (!piece) return '';
+    const symbols: Record<PieceType, string> = {
+      pawn: piece.color === 'white' ? '♙' : '♟',
+      rook: piece.color === 'white' ? '♖' : '♜',
+      knight: piece.color === 'white' ? '♘' : '♞',
+      bishop: piece.color === 'white' ? '♗' : '♝',
+      queen: piece.color === 'white' ? '♕' : '♛',
+      king: piece.color === 'white' ? '♔' : '♚',
     };
     return symbols[piece.type];
   };
 
   return (
     <div className="chess-game">
-      
+       <h2>{gameStatus}</h2>
     </div>
