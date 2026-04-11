@@ -188,3 +188,8 @@ const ChessGame: React.FC = () => {
     };
     return symbols[piece.type];
   };
+
+  return (
+    <div className="chess-game">
+      
+    </div>
