@@ -191,17 +191,25 @@ const ChessGame: React.FC = () => {
 
   return (
     <div className="chess-game">
-       <h2>{gameStatus}</h2>
-       <div className="chess-board">
-         {board.map((row, rIdx) => row.map((piece, cIdx) => {
+      <h2>{gameStatus}</h2>
+      <div className="chess-board">
+        {board.map((row, rIdx) => row.map((piece, cIdx) => {
           const isSelected = selectedSquare?.row === rIdx && selectedSquare?.col === cIdx;
-            const isValid = validMoves.some(m => m.row === rIdx && m.col === cIdx);
-            return (
-               <div
+          const isValid = validMoves.some(m => m.row === rIdx && m.col === cIdx);
+          return (
+            <div
               key={`${rIdx}-${cIdx}`}
               className={`square ${(rIdx + cIdx) % 2 === 0 ? 'light' : 'dark'} ${isSelected ? 'selected' : ''} ${isValid ? 'valid' : ''}`}
               onClick={() => handleSquareClick(rIdx, cIdx)}
             >
-               <span className="piece">{getPieceSymbol(piece)}</span>
-       </div>
+              <span className="piece">{getPieceSymbol(piece)}</span>
+            </div>
+          );
+        }))}
+      </div>
+      <button onClick={() => { setBoard(initializeBoard()); setIsWhiteTurn(true); }}>Reset</button>
     </div>
+  );
+};
+
+export default ChessGame;
