@@ -194,5 +194,6 @@ const ChessGame: React.FC = () => {
        <h2>{gameStatus}</h2>
        <div className="chess-board">
          {board.map((row, rIdx) => row.map((piece, cIdx) => {
+          const isSelected = selectedSquare?.row === rIdx && selectedSquare?.col === cIdx;
        </div>
     </div>
