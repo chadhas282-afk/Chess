@@ -87,3 +87,7 @@
 .square.valid-move.light::after {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.square.valid-move.dark::after {
+  background-color: rgba(255, 255, 255, 0.3);
+}
