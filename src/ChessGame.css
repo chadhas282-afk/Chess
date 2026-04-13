@@ -83,3 +83,7 @@
   border-radius: 50%;
   position: absolute;
 }
+
+.square.valid-move.light::after {
+  background-color: rgba(0, 0, 0, 0.3);
+}
