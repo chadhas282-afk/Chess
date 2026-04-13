@@ -42,3 +42,13 @@
 .reset-btn:hover {
   background-color: #ff5252;
 }
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  gap: 0;
+  background-color: #333;
+  border: 3px solid #000;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
