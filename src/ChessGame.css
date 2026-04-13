@@ -26,3 +26,15 @@
 .game-info p {
   margin: 10px 0;
 }
+
+.reset-btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
