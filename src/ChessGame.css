@@ -91,3 +91,9 @@
 .square.valid-move.dark::after {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+.piece {
+  font-size: 2.5em;
+  cursor: grab;
+  user-select: none;
+}
