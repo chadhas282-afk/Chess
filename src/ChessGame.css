@@ -108,6 +108,6 @@
      grid-template-rows: repeat(8, 40px);
   }
   .piece {
-    
+    font-size: 1.8em;
   }
 }
