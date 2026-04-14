@@ -97,3 +97,7 @@
   cursor: grab;
   user-select: none;
 }
+
+.piece:active {
+  cursor: grabbing;
+}
