@@ -104,12 +104,14 @@
 
 @media (max-width: 600px) {
   .chess-board {
-     grid-template-columns: repeat(8, 40px);
-     grid-template-rows: repeat(8, 40px);
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
   }
+
   .piece {
     font-size: 1.8em;
   }
+
   .chess-game h1 {
     font-size: 1.8em;
   }
