@@ -104,6 +104,6 @@
 
 @media (max-width: 600px) {
   .chess-board {
-    
+     grid-template-columns: repeat(8, 40px);
   }
 }
