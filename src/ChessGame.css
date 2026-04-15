@@ -43,7 +43,7 @@ h1 {
   z-index: 100;
   backdrop-filter: blur(4px);
 }
-/* 
+
 .promotion-dialog {
   background: white;
   padding: 25px;
@@ -51,7 +51,7 @@ h1 {
   text-align: center;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
-
+/* 
 .promotion-dialog h3 {
   margin-top: 0;
   color: #333;
