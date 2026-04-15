@@ -1,3 +1,9 @@
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .chess-game {
   display: flex;
   flex-direction: column;
@@ -7,6 +13,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  position: relative;
 }
 
 .chess-game h1 {
@@ -22,9 +29,63 @@
   text-align: center;
   font-size: 1.2em;
 }
+/* 
+.promotion-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
 
-.game-info p {
-  margin: 10px 0;
+.promotion-dialog {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.promotion-dialog h3 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.promotion-options {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.promotion-options button {
+  font-size: 2.5em;
+  background: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promotion-options button:hover {
+  background: #e0e0e0;
+  transform: scale(1.1);
+  border-color: #764ba2;
+} */
+
+.blurred {
+  filter: blur(3px);
+  pointer-events: none;
 }
 
 .reset-btn {
@@ -49,8 +110,8 @@
   grid-template-rows: repeat(8, 60px);
   gap: 0;
   background-color: #333;
-  border: 3px solid #000;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 8px solid #2d3436;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .square {
@@ -62,13 +123,8 @@
   position: relative;
 }
 
-.square.light {
-  background-color: #f0d9b5;
-}
-
-.square.dark {
-  background-color: #b58863;
-}
+.square.light { background-color: #f0d9b5; }
+.square.dark { background-color: #b58863; }
 
 .square.selected {
   background-color: #baca44;
@@ -84,22 +140,13 @@
   position: absolute;
 }
 
-.square.valid-move.light::after {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.square.valid-move.dark::after {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+.square.valid-move.light::after { background-color: rgba(0, 0, 0, 0.2); }
+.square.valid-move.dark::after { background-color: rgba(255, 255, 255, 0.3); }
 
 .piece {
-  font-size: 2.5em;
+  font-size: 2.8em;
   cursor: grab;
   user-select: none;
-}
-
-.piece:active {
-  cursor: grabbing;
 }
 
 @media (max-width: 600px) {
@@ -112,7 +159,8 @@
     font-size: 1.8em;
   }
 
-  .chess-game h1 {
+  .promotion-options button {
     font-size: 1.8em;
+    padding: 5px;
   }
 }

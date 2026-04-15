@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ChessGame.css';
 
-interface Position {
-  row: number;
-  col: number;
-}
-
-interface Move {
-  from: Position;
-  to: Position;
-}
-
+interface Position { row: number; col: number; }
 type PieceType = 'pawn' | 'rook' | 'knight' | 'bishop' | 'queen' | 'king';
 type Color = 'white' | 'black';
-
-interface Piece {
-  type: PieceType;
-  color: Color;
-}
+interface Piece { type: PieceType; color: Color; }
 
 const ChessGame: React.FC = () => {
   const [board, setBoard] = useState<(Piece | null)[][]>(initializeBoard());
@@ -25,6 +12,7 @@ const ChessGame: React.FC = () => {
   const [validMoves, setValidMoves] = useState<Position[]>([]);
   const [isWhiteTurn, setIsWhiteTurn] = useState(true);
   const [gameStatus, setGameStatus] = useState<string>('White to move');
+  const [promotionMove, setPromotionMove] = useState<{from: Position, to: Position, color: Color} | null>(null);
 
   function initializeBoard(): (Piece | null)[][] {
     const newBoard: (Piece | null)[][] = Array(8).fill(null).map(() => Array(8).fill(null));
@@ -122,7 +110,6 @@ const ChessGame: React.FC = () => {
     const piece = board[pos.row][pos.col];
     if (!piece) return [];
     const rawMoves = getRawMoves(pos, board);
-
     return rawMoves.filter(move => {
       const tempBoard = board.map(row => [...row]);
       tempBoard[move.row][move.col] = piece;
@@ -134,7 +121,6 @@ const ChessGame: React.FC = () => {
   useEffect(() => {
     const turnColor = isWhiteTurn ? 'white' : 'black';
     const inCheck = isCheck(turnColor, board);
-
     let hasMoves = false;
     for (let r = 0; r < 8; r++) {
       for (let c = 0; c < 8; c++) {
@@ -144,7 +130,6 @@ const ChessGame: React.FC = () => {
       }
       if (hasMoves) break;
     }
-
     if (!hasMoves) {
       setGameStatus(inCheck ? `CHECKMATE! ${isWhiteTurn ? 'Black' : 'White'} Wins!` : "STALEMATE!");
     } else {
@@ -152,17 +137,31 @@ const ChessGame: React.FC = () => {
     }
   }, [isWhiteTurn, board]);
 
+  function executeMove(from: Position, to: Position, promotedType?: PieceType) {
+    const newBoard = board.map(r => [...r]);
+    const movingPiece = board[from.row][from.col];
+    if (!movingPiece) return;
+
+    newBoard[to.row][to.col] = promotedType ? { ...movingPiece, type: promotedType } : movingPiece;
+    newBoard[from.row][from.col] = null;
+    
+    setBoard(newBoard);
+    setSelectedSquare(null);
+    setValidMoves([]);
+    setIsWhiteTurn(!isWhiteTurn);
+    setPromotionMove(null);
+  }
+
   function handleSquareClick(row: number, col: number) {
-    if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE")) return;
+    if (gameStatus.includes("Win") || gameStatus.includes("STALEMATE") || promotionMove) return;
 
     if (selectedSquare && validMoves.some(m => m.row === row && m.col === col)) {
-      const newBoard = board.map(r => [...r]);
-      newBoard[row][col] = board[selectedSquare.row][selectedSquare.col];
-      newBoard[selectedSquare.row][selectedSquare.col] = null;
-      setBoard(newBoard);
-      setSelectedSquare(null);
-      setValidMoves([]);
-      setIsWhiteTurn(!isWhiteTurn);
+      const piece = board[selectedSquare.row][selectedSquare.col];
+      if (piece?.type === 'pawn' && (row === 0 || row === 7)) {
+        setPromotionMove({ from: selectedSquare, to: { row, col }, color: piece.color });
+        return;
+      }
+      executeMove(selectedSquare, { row, col });
       return;
     }
 
@@ -191,8 +190,25 @@ const ChessGame: React.FC = () => {
 
   return (
     <div className="chess-game">
+      <h1>CHESS</h1>
       <h2>{gameStatus}</h2>
-      <div className="chess-board">
+
+      {promotionMove && (
+        <div className="promotion-overlay">
+          <div className="promotion-dialog">
+            <h3>SELECT PROMOTION Piece:</h3>
+            <div className="promotion-options">
+              {(['queen', 'rook', 'bishop', 'knight'] as PieceType[]).map(type => (
+                <button key={type} onClick={() => executeMove(promotionMove.from, promotionMove.to, type)}>
+                  {getPieceSymbol({ type, color: promotionMove.color })}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className={`chess-board ${promotionMove ? 'blurred' : ''}`}>
         {board.map((row, rIdx) => row.map((piece, cIdx) => {
           const isSelected = selectedSquare?.row === rIdx && selectedSquare?.col === cIdx;
           const isValid = validMoves.some(m => m.row === rIdx && m.col === cIdx);
@@ -207,7 +223,7 @@ const ChessGame: React.FC = () => {
           );
         }))}
       </div>
-      <button onClick={() => { setBoard(initializeBoard()); setIsWhiteTurn(true); }}>Reset</button>
+      <button className="reset-btn" onClick={() => { setBoard(initializeBoard()); setIsWhiteTurn(true); setPromotionMove(null); }}>RESET GAME</button>
     </div>
   );
 };
