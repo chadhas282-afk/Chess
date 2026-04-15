@@ -58,12 +58,12 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* .promotion-options {
+.promotion-options {
   display: flex;
   gap: 15px;
   justify-content: center;
 }
-
+/* 
 .promotion-options button {
   font-size: 2.5em;
   background: #f0f0f0;
