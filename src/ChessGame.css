@@ -51,14 +51,14 @@ h1 {
   text-align: center;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
-/* 
+
 .promotion-dialog h3 {
   margin-top: 0;
   color: #333;
   margin-bottom: 15px;
 }
 
-.promotion-options {
+/* .promotion-options {
   display: flex;
   gap: 15px;
   justify-content: center;
